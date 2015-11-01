@@ -5,15 +5,18 @@ int main() {
 	int memory[100];
 	memory[0] = 001;
 	memory[99] = 800;
+	memory[4] = 123;
 	int pcount = 0, acc = 0; // pcount: Current "byte", acc: Current data?
 //	printf("%d, %d\n", pcount, acc); //Test print
 	int stop = 0;
 	int inst = 0;	
-	while(stop=0) {
+	while(stop==0) {
 		inst = memory[pcount];
 		++pcount;
 		int adress = inst % 100;
 		int op = inst / 100;
+//		printf("Instruction Used: %d\n", inst);
+//		printf("Option used: %d\n", op);
 		switch (op) {
 			int data;
 			case 0: {
@@ -42,14 +45,16 @@ int main() {
 				break;
 			}
 			case 8: {
-				memory[99]+= pcount;
-				pcount+= adress;
+				memory[99]+= pcount; // check dat bastard
+				pcount = adress;
+				break;
 			}
 			case 9: {
 				stop = 1;
 				break;
 			}
 		}
+//		printf("End of loop check\n");
 	}
 
 	return 0;
