@@ -1,15 +1,13 @@
 #include <stdio.h>
-
+#include <math.h>
 
 int main() {
 	int memory[100];
 	memory[0] = 001;
-	memory[99] = 800;
-	memory[4] = 123;
 	int pcount = 0, acc = 0; // pcount: Current "byte", acc: Current data?
-//	printf("%d, %d\n", pcount, acc); //Test print
 	int stop = 0;
 	int inst = 0;	
+	int data, x, y;
 	while(stop==0) {
 		inst = memory[pcount];
 		++pcount;
@@ -18,7 +16,6 @@ int main() {
 //		printf("Instruction Used: %d\n", inst);
 //		printf("Option used: %d\n", op);
 		switch (op) {
-			int data;
 			case 0: {
 				scanf("%d", &data);
 				memory[adress] = data;
@@ -36,6 +33,13 @@ int main() {
 				if (acc<0) pcount+= adress;
 				break;
 			}
+			case 4: {
+				x = adress / 10;
+				y = adress & 10;
+				acc *= pow(10, x);
+               			acc /= pow(10, y);
+				break;
+			}
 			case 5: {
 				printf("%d\n", memory[adress]);
 				break;
@@ -44,8 +48,12 @@ int main() {
 				memory[adress] = acc;
 				break;
 			}
+         		case 7: {
+                		acc -= memory[adress];
+                		break;
+			}
 			case 8: {
-				memory[99]+= pcount; // check dat bastard
+				memory[99]= 800 + pcount; // check dat bastard
 				pcount = adress;
 				break;
 			}
