@@ -14,7 +14,7 @@ int main(){
 		perror("open");
 		return 1;
 	}
-	size_t read_return_value = read(fd, buffer, 20-1);
+	ssize_t read_return_value = read(fd, buffer, 20-1);
 	if (read_return_value < 0){
 		perror("read");
 	}
