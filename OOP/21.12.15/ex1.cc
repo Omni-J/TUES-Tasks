@@ -6,90 +6,31 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <cmath>
 using namespace std;
+
+#ifndef OPERATION_HH__
+#define OPERATION_HH__
+
+#ifndef POSTFIX_HH__
+#define POSTFIX_HH__
 
 class Postfix;
 class CalcError{};
 
-class Op {
-	Postfix& postfix_;
-	string token_;
+class Swap: public Op {
 public:
-	Op(Postfix& postfix, const string& token)
-	: postfix_(postfix),
-	  token_(token)
+	Swap(Postfix& postfix)
+	: Op(postfix, "fix")
 	{}
 	
-	string& get_token() const {
-		return token_;
+	void calc(){
+		double val1 = get_postfix().get_val();
+		double val1 = get_postfix().get_val();
+		
+		
 	}
-	
-	Postfix& get_postfix() {
-		return postfix;
-	}
-	
-	virtual void calc() = 0;
-
-};
-
-class Postfix{
-	vector<Op*> context_;
-	vector<double> stack_;
-public:
-
-	double get_val(){
-		if(stack_.empty()){
-			throw CaclError();
-		}
-		double val = stack_.back();
-		stack_.pop_back();
-		return val;
-	}
-	
-	void put_val(double val){
-		stack_.push_back(val)
-	}
-
-	void add_op(Op*){
-		context_.push_back(op);
-	}
-	
-	Op* get_op(const string& token){
-		Op* op = 0;
-		for(vector<Op*>::iterator it=context_.begin();
-			it!= context_.end(); ++it) {
-				
-			if( (*it) -> get_token() == token ){
-				op = *it;
-			}		
-		}
-	}
-	void run(istream& in){
-		string token;
-		while(true){
-			in >> token;
-			if(!in){
-				break;
-			}
-			Op* op = get_op(token);
-			if(op){
-				op->calc();
-				cerr << "op(" << token << "): res="
-				 << stack_.back() <<endl;
-			} else {
-				istringstream istr(token);
-				double val = 0;
-				istr >> val;
-				if(!istr){
-					cerr << "bad value: " << token << endl;
-					throw CalcError();
-				}
-				stack_.push_back(val);
-				cerr << "data: " << val << endl;
-			}
-		}
-	}
-};
+}
 
 class BinOp: public Op{
 public:
@@ -196,8 +137,37 @@ public:
 	}
 };
 
+class Dup: public Op{
+public:
+	Dup(Postfix& postfix)
+	: Op(postfix, "dup")
+	{}
+	
+	void calc(){
+		double val = get_postfix().get_val();
+		get_postfix().put_val(val);
+		get_postfix().put_val(val);
+	}
+}
+
 // Neg
 // Sqrt
+
+class CompositeOp: public Op{
+	vector<OP*> ops_;
+public:
+	CompositeOp(Postfix& postfix, string token)
+	: Op(postfix, token)
+	{}
+	
+	void calc(){
+		for(vector<Op*>::iterator it = ops_.begin();
+			it!=ops_end(); ++it) {
+			
+			
+			}
+	}
+}
 
 int main(){
 
@@ -209,6 +179,8 @@ int main(){
 	
 	postfix.add_op(new Neg (posfix));
 	postfix_add_op(new Sqrt (postfix));
+	postfix_add_op(new Dup (postfix));
+	postfix_add_op(new Swap (postfix));
 	postfix.run(cin);
 	return 0;
 }
