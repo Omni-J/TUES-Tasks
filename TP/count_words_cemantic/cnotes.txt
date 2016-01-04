@@ -1,0 +1,7 @@
+Imame za cel da napravim count words da razbira semantika
+
+imame neshto nare4eno ASP abstract semantic tree
+
+trees - child parents leafs siblings
+
+JSON 
