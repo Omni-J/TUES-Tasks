@@ -1,0 +1,80 @@
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+
+// $.. echo $? vijdame kakvo returnva probramata
+
+/*	NOTES:
+
+fill buffer funtion
+
+seek to new_lines[count_found+1] 
+or
+in case that the hole file show be printed write good and long if 
+
+*/
+
+void remember_line(char *arr, char *byte, int *count_found){
+	printf("Opening remeber_line func\n");	
+	arr[*count_found] = *byte;
+	printf("das %p das",&byte);
+	*count_found=*count_found+1;
+	printf("count_found: %d\n", *count_found);
+	if (*count_found==10){ 
+		*count_found=0; 
+	}
+	printf("count_found1: %d\n", *count_found);	
+	
+}
+
+int main(int argc, char *argv[]){
+	char memory; 
+	char *buffer = &memory; //read() wont work until physical memory is allocated
+	char new_lines[9]; // Not good ! 
+	int file_size = 0, count_found=0;
+	ssize_t read_return_value ;
+	int fd = open(argv[1], O_RDONLY);
+	if (fd < 0){
+		perror("Error while opening");
+	}
+	do {
+		printf("Loop enter\n");		
+		read_return_value = read(fd, buffer, 1);
+		printf("Loop entered\n");
+		if (read_return_value <= 0) {
+			if (read_return_value < 0){
+				perror("Error while reading");
+			}
+			break;
+		}
+		else {
+			printf("Entered proses\n");
+			int i = read_return_value;
+			printf("%d\n",i);
+			printf("%c\n",*buffer);
+			file_size++;					
+			if (*buffer == '\n') {
+				remember_line(new_lines, buffer, &count_found);
+			}
+		}
+	} while ((read_return_value != 0)&&(read_return_value != -1));
+	printf("You wot m8\n");
+	printf("count_found: %d\n", count_found);
+
+
+
+	if (1==1){			
+		ssize_t write_return_value = write(1, &new_lines[0], file_size);
+		if (write_return_value<0){
+			perror("Error while writing");
+		}
+	}
+	else {
+	}
+	int close_return_value = close(fd);
+	if (close_return_value < 0){
+		perror("Error while closing"); 
+	}
+	return 0;
+}
