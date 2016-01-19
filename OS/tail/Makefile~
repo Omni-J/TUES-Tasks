@@ -1,7 +1,0 @@
-exec: \
-compile
- ./tail
-
-compile: \
-tail2.c
-gcc tail.c -o tail
