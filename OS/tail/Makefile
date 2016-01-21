@@ -1,9 +1,2 @@
-exec:\
-compile
-	./tail
-
-compile: \
-tail.c
+all:
 	gcc tail.c -o tail
-
-
