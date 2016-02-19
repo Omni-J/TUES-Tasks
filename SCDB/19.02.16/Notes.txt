@@ -1,0 +1,17 @@
+Няма не мога, има не искам!!!
+Virtual, override - can be different for all object of the class
+Static - for the class not for the objects, same for the all the objects cannot be changed by them
+Dynamic link
+Атомарни, примитивни типове данни:
+  Цели
+  Реални
+  Сим. низове
+  BLOB
+Основен тип: Таблици:
+  Име и колони
+  Ключове и релации
+  Индекси и първични индекси
+!!!! N.B. Ключове != Индекси !!!!!!!!!!
+  Вторичен индекс и сортирането по тях
+  Външен Ключ: нова таблица със първичен ключ <-
+  H.M: Install Access 

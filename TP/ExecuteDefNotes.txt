@@ -1,0 +1,4 @@
+Notes on defending:
+Running the thing on virtual machine;
+Another is Charroot or smt like this,
+That changes the root dir or some shit like that;
