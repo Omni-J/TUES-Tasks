@@ -1,0 +1,3 @@
+H.M: Tablici za magazinite da gi mislim
+Delphi, MySQL,
+H.M: App for counting the monthly income for the local stores
