@@ -1,0 +1,7 @@
+Things to buy:
+Arduino
+Jumpers
+Breadboard
+Diods
+Tact Switch
+PCB
