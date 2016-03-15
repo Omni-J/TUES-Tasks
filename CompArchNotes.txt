@@ -1,7 +1,7 @@
 Things to buy:
 Arduino
-Jumpers
+Jumpers - 30
 Breadboard
-Diods
-Tact Switch
-PCB
+Diods - 200
+Tact Switch - 10
+Dev PCB, монтажна и/или развойна 
