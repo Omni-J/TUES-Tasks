@@ -4,4 +4,13 @@ Jumpers - 30
 Breadboard
 Diods - 200
 Tact Switch - 10
-Dev PCB, монтажна и/или развойна 
+Dev PCB, монтажна и/или развойна
+
+Things to ask:
+Is the upload of mine appropriate?
+How do you connect correctly the things?
+How do you reset?
+How do you run or is it automaticly runned?
+Breadboard config?
+Breadboard holes meaning?
+Why shouldn't we use global variables in Embedded? And why does it brake?

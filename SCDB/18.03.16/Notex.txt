@@ -1,0 +1,4 @@
+First normal form: In all cells there is only one value
+Second normal form:
+Third normal form:
+!!! Find it in the net !!! 
