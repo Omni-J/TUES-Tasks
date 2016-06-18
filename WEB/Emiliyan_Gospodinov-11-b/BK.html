@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <p>
+    Choose length of number:
+    <input type="number" id="startingNumber">
+    <button onclick="outputArr()">New Game</button>
+  </p>
+  
+  <button onclick="surrender()">Surrender</button>
+  <button onclick="restart()">Restart</button>
+
+  <p>
+    Type your numbers for test:
+
+    <input id="playerNumber" type="number" onkeypress="return keyPressed(event)" />
+    <button id="tryclicker" onclick="checker()">Try</button>
+    <button onclick="lastStatus()">Check last try</button>
+  </p>
+  <p id="turnInfo"></p>
+  <script src="BK.js"></script>
+</body>
+</html>
