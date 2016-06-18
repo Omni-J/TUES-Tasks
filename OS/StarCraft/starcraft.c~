@@ -6,9 +6,7 @@ Starcraft 3 beta:) design
 */
 
 /*
-No idea why using multiple com centers doesnt work
-Also when using multiple com centers the sync fails
-but i wont bother to repair because its no use anyway
+znam zashto dava segmentation fault no nqma vreme da go opravq :(
 */
 
 #include <pthread.h>
@@ -21,7 +19,6 @@ int workers = 5;
 int soldiers = 0;
 int centers = 1;
 
-pthread_t worker_threads[200]; //max possible workers by the rules
 pthread_mutex_t min_mutex;
 pthread_mutex_t sol_mutex;
 pthread_mutex_t wor_mutex;
@@ -30,7 +27,7 @@ pthread_mutex_t cen_val_mutex;
 void work(void *w){
   int i;
   int id = (int)w;
-  while((minerals>0)&&(soldiers<20)){
+  while((minerals>0)&&(soldiers<20)){ //change here too !!!
     printf("SCV %d is mining\n", id+1);
     pthread_mutex_lock(&min_mutex);
       minerals -= 8;
@@ -78,7 +75,8 @@ void create_center(){
 
 void create_worker(){
   sleep(1);
-  if(pthread_create(&worker_threads[workers], NULL, work, (void*)workers)){
+  pthread_t worker;
+  if(pthread_create(&worker, NULL, work, (void*)workers)){
     perror("Error while creating worker");
   }
   pthread_mutex_lock(&min_mutex);
@@ -87,7 +85,7 @@ void create_worker(){
   pthread_mutex_lock(&wor_mutex);
   workers+=1;
   pthread_mutex_unlock(&wor_mutex);
-  printf("SCV good to go, sir.\n");
+  printf("SCV good to go, sir.");
 }
 
 int main(){
@@ -99,6 +97,7 @@ int main(){
       pthread_mutex_init(&cen_mutex[i], NULL);
   }
   pthread_mutex_init(&cen_val_mutex, NULL);
+  pthread_t worker_threads[200]; //max possible workers by the rules
   for(i = 0; i < workers; i++){
       if(pthread_create(&worker_threads[i], NULL, work, (void*)i)){
         perror("Error while creating worker");
