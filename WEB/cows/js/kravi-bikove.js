@@ -1,4 +1,6 @@
+var turns = 1;
 /*
+fuq
 //Purpose: randomy generate number with a seed nuber length
 function getRandomInt(seed) {
     var legnth = 1;
@@ -10,43 +12,56 @@ function getRandomInt(seed) {
     return Math.floor(length + Math.random() * (9*lenght);
 }
 */
-var turnCounter = 1;
 
-function arrLength() {
-  var x = document.getElementById("startingNumber").value;
-  if(x >= 3 && x <= 10){
-    return x;
-  }else{
-    alert("Number length must be between 3 and 10!");
+function KeyPressed(key) {
+  if (key.keyCode == 13) {
+    var playerNum = document.getElementById("playerN").value;
+    checker();
   }
 }
 
+function Surrender() {
+  alert("The correct number is: " + rightN.join(""));
+  Restart();
+}
 
-function outputArr() {
-  rightNumbers = [];
-  rightNumbers.push(Math.floor((Math.random() * 9) + 1));
-  while(rightNumbers.length < arrLength()){
+function Restart(){
+  alert("Restarting game");
+  document.getElementById("turnInfo").innerHTML = "";
+  turns = 1;
+  GenerateRand();
+}
+
+function Length() {
+  var i = document.getElementById("startingNumber").value;
+  if(i >= 3 && i <= 10){
+    return i;
+  }else{
+    alert("Length must be between 3 and 10!");
+  }
+}
+
+function GenerateRand() {
+  rightN = [];
+  rightN.push(Math.floor((Math.random() * 9) + 1)); // no 0
+  while(rightN.length < Length()){
     var rand = Math.floor((Math.random() * 9) + 0);
-    if(rightNumbers.indexOf(rand) == -1){
-      rightNumbers.push(rand);
+    if(rightN.indexOf(rand) == -1){
+      rightN.push(rand);
     };
   };
-  return rightNumbers;
+  return rightN;
 }
 
-function surrender() {
-  alert("Right number is: " + rightNumbers.join(""));
-}
-
-function checking(playerNumber){
+function checking(playerN){
   bulls = 0, cows = 0;
-  for(var i = 0; i < arrLength();i++){
-    if(playerNumber[i] == rightNumbers[i]){
+  for(var i = 0; i < Length();i++){
+    if(playerN[i] == rightN[i]){
       bulls++;
     }else{
-      for(var j = 0; j < arrLength(); j++){
+      for(var j = 0; j < Length(); j++){
         if(i != j){
-          if(playerNumber[i] == rightNumbers[j]){
+          if(playerN[i] == rightN[j]){
             cows++;
           }
         }
@@ -57,53 +72,34 @@ function checking(playerNumber){
   return data;
 }
 
-function keyPressed(key) {
-	if (key.keyCode == 13) {
-		var playerNum = document.getElementById("playerNumber").value;
-		checker();
-	}
-}
 
 function checker(){
-  var playerNum = document.getElementById("playerNumber").value;
+  var playerNum = document.getElementById("playerN").value;
   var repeat = false;
-  for(var i = 0; i < arrLength();i++){
-      for(var j = 0; j < arrLength(); j++){
+  for(var i = 0; i < Length();i++){
+      for(var j = 0; j < Length(); j++){
         if(playerNum[i] == playerNum[j] && i != j){
           repeat = true;
           break;
         }
       }
   }
-  if(playerNum.length != arrLength()){
-    alert("Length of this number must be exactly " + arrLength() + " numbers!");
+  if(playerNum.length != Length()){
+    alert("Length of this number must be exactly " + Length() + " numbers!");
   }else if(repeat == true){
     alert("You can't repeat numbers!");
   }else{
     var data = checking(playerNum);
-    if(turnCounter == 1){
-      document.getElementById("turnInfo").innerHTML = "Turn " + turnCounter + " : " + playerNum + " Bulls: " + data.bull + " , Cows: " +data.cow + "<br>";
-      turnCounter++;
+    if(turns == 1){
+      document.getElementById("turnInfo").innerHTML = "Turn " + turns + " : " + playerNum + " Bulls: " + data.bull + " , Cows: " +data.cow + "<br>";
+      turns++;
     }else{
-      document.getElementById("turnInfo").innerHTML += "Turn " + turnCounter + " : " + playerNum + " Bulls: " + data.bull + " , Cows: " +data.cow + "<br>";
-      turnCounter++;
+      document.getElementById("turnInfo").innerHTML += "Turn " + turns + " : " + playerNum + " Bulls: " + data.bull + " , Cows: " +data.cow + "<br>";
+      turns++;
     }
-    if(data.bull == arrLength()){
-      turnCounter--;
-      alert("You won for " +turnCounter+ " turns! Restarting number");
-      document.getElementById("turnInfo").innerHTML = "";
-      turnCounter = 1;
-      outputArr();
+    if(data.bull == Length()){
+      alert("You won for " +turns+ " turns! Restarting number");
+      Restart();
     }
   };
-}
-
-function lastStatus(){
-  alert("Last time you had Bulls: " + data.bull + " and Cows: " +data.cow);
-}
-
-function restart(){
-  alert("Restarting game");
-  document.getElementById("turnInfo").innerHTML = "";
-  turnCounter = 1;
 }

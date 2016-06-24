@@ -5,25 +5,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
       integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
       crossorigin="anonymous">
-      <title>July's bulls and cows</title>
+        <title>July's bulls and cows</title>
   </head>
   <body>
-    <h1>COWS AND BULLS</h1>
+    <h1 class="text-center">COWS AND BULLS</h1>
     <div class="panel panel-default">
       <div class="panel-heading">
         Choose number length:
         <input type="number" id="startingNumber">
-        <button onclick="outputArr()" class="btn btn-success">Begin</button>
-        <button onclick="restart()" class="btn btn-warning">Restart</button>
+        <button onclick="GenerateRand()" class="btn btn-success">Begin</button>
+        <button onclick="Restart()" class="btn btn-warning">Change Number</button>
       </div>
       <div class="panel-body">
         <div class="input-group">
           <span class="input-group-addon">Type in your suggestion:</span>
-          <input id="playerNumber" class="form-control" type="number" onkeypress="return keyPressed(event)"/>
+          <input id="playerN" class="form-control" type="number" onkeypress="return KeyPressed(event)"/>
           <span class="input-group-btn">
             <button id="tryclicker" onclick="checker()" class="btn btn-primary" type="button">Try</button>
-            <button onclick="surrender()" class="btn btn-danger">Surrender</button>
-            <button onclick="lastStatus()" class="btn btn-info">Help</button>
+            <button onclick="Surrender()" class="btn btn-danger">Surrender</button>
+            <button class="btn btn-info">Help</button>
           </span>
         </div>
       </div>
