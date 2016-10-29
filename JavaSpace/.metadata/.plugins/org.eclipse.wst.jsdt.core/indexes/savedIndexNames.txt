@@ -1,0 +1,6 @@
+INDEX VERSION 1.3+/home/stoeff/CodeSpace/JavaSpace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+52637152.index
+4133515702.index
+230302472.index
+712606424.index
+2344908118.index

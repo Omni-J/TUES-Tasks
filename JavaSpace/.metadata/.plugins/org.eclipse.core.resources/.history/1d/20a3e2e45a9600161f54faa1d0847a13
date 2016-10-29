@@ -1,0 +1,6 @@
+package org.stoefff;
+
+public class Snippet {
+	private static final String HOST = "localhost";
+}
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/stoeff/CodeSpace/JavaSpace/1_Sockets"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/home/stoeff/CodeSpace/JavaSpace/1_Sockets"/>
+			<item value="/home/stoeff/CodeSpace/SampleServlet"/>
+			<item value="/home/stoeff/CodeSpace/SocketsExample"/>
+			<item value="/home/stoeff/CodeSpace/elsys/Java/exams/baseprojects/PostfixCalculator"/>
+			<item value="/home/stoeff/CodeSpace/elsys/Java/EchoServer"/>
+			<item value="/home/stoeff/CodeSpace/elsys/Java/2016-04-12-dining-philosophers"/>
+			<item value="/home/stoeff/CodeSpace/teach2015-2016/2016-03-30-ProducerConsumer"/>
+			<item value="/home/stoeff/CodeSpace/elsys/Java/JsonSerializer"/>
+			<item value="/home/stoeff/CodeSpace/teach2015-2016/ManyToOne"/>
+			<item value="/home/stoeff/CodeSpace/teach2015-2016/BallsAndBoxes"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+	<section name="BasicNewProjectResourceWizard">
+	</section>
+</section>

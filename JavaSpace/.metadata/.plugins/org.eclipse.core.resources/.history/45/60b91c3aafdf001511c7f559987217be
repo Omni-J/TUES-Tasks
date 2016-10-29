@@ -1,0 +1,5 @@
+package elsys.clas;
+
+public abstract class BankAccount {
+
+}

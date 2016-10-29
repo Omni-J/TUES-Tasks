@@ -1,0 +1,39 @@
+package org.elsys.todo;
+
+import java.util.List;
+
+public class TodoIMP implements TodoList{
+
+	String Task;
+	
+	@Override
+	public Boolean isCompleted() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Double percentageCompleted() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Task> getTasks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TodoList filter(Criteria criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TodoList join(TodoList other) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
