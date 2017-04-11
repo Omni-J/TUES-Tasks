@@ -1,0 +1,4 @@
+Property meaning:
+  Defining private var in class
+  It automatically creates getters and setters
+  This means the var can be changed line its a public var as a property ?

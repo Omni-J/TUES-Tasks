@@ -1,0 +1,124 @@
+Module Module1
+
+
+    Sub Main()
+        Dim matrix As Integer(,) = FillMatrix()
+
+        MaxMinSumMulRow(matrix, matrix.GetLength(0), matrix.GetLength(1))
+        MaxMinSumMulCol(matrix, matrix.GetLength(0), matrix.GetLength(1))
+        AverageElementMultiplierMin(matrix)
+        AverageElementMultiplierPlus(matrix)
+    End Sub
+
+    Private Function FillMatrix() As Integer(,)
+        Console.WriteLine("Vyvedete broi redove")
+        Dim rowCount As Integer = Integer.Parse(Console.ReadLine())
+        Console.WriteLine("Vyvedete broi koloni")
+        Dim colCount As Integer = Integer.Parse(Console.ReadLine())
+        Dim matrix As Integer(,) = New Integer(rowCount - 1, colCount - 1) {}
+
+        For i As Integer = 0 To rowCount - 1
+            For j As Integer = 0 To colCount - 1
+                matrix(i, j) = Integer.Parse(Console.ReadLine())
+            Next
+        Next
+        Return matrix
+    End Function
+
+    Private Sub MaxMinSumMulRow(ByRef matrix As Integer(,), rowCount As Integer, colCount As Integer)
+        Dim sumMinRow As Integer = 0, mulMinRow As Integer = 1, sumMaxRow As Integer = 0, mulMaxRow As Integer = 1, rowMin As Integer = 0, rowMax As Integer = 0
+        For i As Integer = 0 To rowCount - 1
+            For j As Integer = 0 To colCount - 1
+
+                If j = 0 Then
+                    rowMin = matrix(i, j)
+                    rowMax = matrix(i, j)
+                End If
+                If rowMin > matrix(i, j) Then
+                    rowMin = matrix(i, j)
+                End If
+                If rowMax < matrix(i, j) Then
+                    rowMax = matrix(i, j)
+                End If
+            Next
+            sumMinRow += rowMin
+            sumMaxRow += rowMax
+            mulMinRow *= rowMin
+            mulMaxRow *= rowMax
+        Next
+        Console.WriteLine("Sumata ot minimumite po redove {0}", sumMinRow)
+        Console.WriteLine("Sumata ot maximumite po redove {0}", sumMaxRow)
+        Console.WriteLine("Proizvedenito ot minimumite po redove {0}", mulMinRow)
+        Console.WriteLine("Proizvedenito ot maximumite po redove {0}", mulMaxRow)
+    End Sub
+
+
+    Private Sub MaxMinSumMulCol(ByRef matrix As Integer(,), rowCount As Integer, colCount As Integer)
+        Dim sumMinCol As Integer = 0, mulMinCol As Integer = 1, sumMaxCol As Integer = 0, mulMaxCol As Integer = 1
+
+        For j As Integer = 0 To colCount - 1
+            Dim colMin As Integer = 0, colMax As Integer = 0
+            For i As Integer = 0 To rowCount - 1
+                If i = 0 Then
+                    colMin = matrix(j, i)
+                    colMax = matrix(j, i)
+                End If
+                If colMin > matrix(i, j) Then
+                    colMin = matrix(i, j)
+                End If
+                If colMax < matrix(i, j) Then
+                    colMax = matrix(i, j)
+                End If
+            Next
+            sumMinCol += colMin
+            sumMaxCol += colMax
+            mulMinCol *= colMin
+            mulMaxCol *= colMax
+        Next
+
+        Console.WriteLine("Sumata ot minimumite po coloni {0}", sumMinCol)
+        Console.WriteLine("Sumata ot maximumite po coloni {0}", sumMaxCol)
+        Console.WriteLine("Proizvedenito ot minimumite po coloni {0}", mulMinCol)
+        Console.WriteLine("Proizvedenito ot maximumite po coloni {0}", mulMaxCol)
+    End Sub
+
+
+    Private Sub AverageElementMultiplierMin(ByRef matrix As Integer(,))
+        Dim sum As Double = 0
+
+        For i As Integer = 0 To matrix.GetLength(0) - 1
+            For j As Integer = 0 To matrix.GetLength(1) - 1
+                sum += matrix(i, j)
+            Next
+        Next
+
+        Dim average As Double = sum / (matrix.GetLength(0) * matrix.GetLength(1))
+
+        For Each item As Integer In matrix
+            If item <= 0 Then
+                Console.Write("Neg: ")
+                Console.WriteLine(item * average)
+            End If
+        Next
+    End Sub
+
+    Private Sub AverageElementMultiplierPlus(ByRef matrix As Integer(,))
+        Dim sum As Double = 0
+
+        For i As Integer = 0 To matrix.GetLength(0) - 1
+            For j As Integer = 0 To matrix.GetLength(1) - 1
+                sum += matrix(i, j)
+            Next
+        Next
+
+        Dim average As Double = sum / (matrix.GetLength(0) * matrix.GetLength(1))
+
+        For Each item As Integer In matrix
+            If item >= 0 Then
+                Console.Write("Pos: ")
+                Console.WriteLine(item * average)
+            End If
+        Next
+    End Sub
+
+End Module
