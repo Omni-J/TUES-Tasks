@@ -1,0 +1,26 @@
+NetworkX -
+pyez - used to call Juniper Devices
+
+no point to multy point connection
+
+ospf network topogy giagram
+ospf-visualizer webernets for other products
+
+multy d graph
+usefull algorithms:
+
+
+spider(anaconda) python ide
+
+mircho@smartcom.bg or gmail.com
+
+
+OOP
+4 Homeworks - 20% of final
+2 Exams during the semester - 10% weight of final
+1 Project - 30% of final
+50% for 3 on exams for the above
+
+Theory exam - 25% of final
+Practical exam - 15% of final
+40% for 3 on the above
